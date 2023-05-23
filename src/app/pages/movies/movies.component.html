@@ -1,0 +1,55 @@
+<div class="row mt-5" *ngIf="pelicula">
+  <div class="col-md-6">
+    <img
+      [src]="pelicula.poster_path | poster"
+      [alt]="pelicula.title"
+      class="img-thumbnail"
+    />
+  </div>
+
+  <div class="col-md-6">
+    <h3>{{ pelicula.title }}</h3>
+
+    <div class="row text-white mt-5">
+      <div class="col">
+        Genres:
+        <span *ngFor="let genre of pelicula.genres; let last = last"> 
+          {{ genre.name }}{{ last ? "" : ", " }}
+        </span>
+        
+      </div>
+      <div class="text-white mt-2">
+        Companies:
+        <span *ngFor="let compani of pelicula.production_companies; let last = last">
+            {{ compani.name }}{{ last ? "" : ", " }}
+          </span>
+      </div>
+
+      <div class="col text-white mt-3 ">
+        Rating ⭐ {{ pelicula.vote_average | number : "1.1-2" }}
+      </div>
+
+      <div class="col text-white mt-3">
+        Bubget: {{ pelicula.budget | number : "1.1" }}
+      </div>
+      
+    </div>
+    
+    <div class="row">
+      <div class="col text-white mt-5">
+        {{ pelicula.overview }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-outline-info mt-5" (click)="back()">Back</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-5" *ngIf="cast.length > 0">
+  <div class="col">
+    <app-cast-slider [cast]="cast"></app-cast-slider>
+  </div>
+</div>

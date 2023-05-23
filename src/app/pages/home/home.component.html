@@ -1,0 +1,11 @@
+<h1>Trending</h1>
+<div class="row" *ngIf="movies.length > 0">
+    <div class="col">
+        
+        <app-slider [movies]="moviesSlider"></app-slider>
+    </div>
+</div> 
+<h1 class="mt-5">Popular</h1>
+<app-peliculas-poster-grid *ngIf='movies.length > 0'
+[movies]="movies"></app-peliculas-poster-grid>
+
